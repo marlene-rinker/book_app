@@ -41,3 +41,13 @@ Start time: 3:30 pm
 Finish time: 4:02 pm
 
 Actual time needed to complete: 32 minutes
+
+
+### Set Up Form To Search Google Books
+Estimate of time needed to complete: 1 hour
+
+Start time: 4:08 pm
+
+Finish time: 
+
+Actual time needed to complete: 
