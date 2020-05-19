@@ -39,7 +39,7 @@ function getBooks (req, res) {
     q: req.body.search[0],
     maxResults: 10
   };
-
+  // TODO: make search specific to title or author??
   superagent.get(url)
     .query(queryForSuper)
     .then(resultFromSuper => {
@@ -62,14 +62,13 @@ function getBooks (req, res) {
 
 }
 
-
+// TODO: make sure no mixed content - urls should be https
 function Book(obj) {
   console.log(obj);
   this.image = 'https://www.freeiconspng.com/uploads/book-icon--icon-search-engine-6.png';
   if (obj.volumeInfo.imageLinks && obj.volumeInfo.imageLinks.thumbnail) {
     this.image = obj.volumeInfo.imageLinks.thumbnail;
   }
-  // this.image = 'https://www.freeiconspng.com/uploads/book-icon--icon-search-engine-6.png';
   this.title = obj.volumeInfo.title || 'no title';
   this.author = obj.volumeInfo.authors[0] || 'no author';
   this.description = obj.volumeInfo.description || 'no description';
