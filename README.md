@@ -24,6 +24,8 @@
 
 05-18-2020 22:55 Added an errors page
 
+05-19-2020 08:25 Added ability to show all authors and prevented mixed content on image urls
+
 
 
 ## Credits and Collaborations 

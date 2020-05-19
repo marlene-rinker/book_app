@@ -32,7 +32,7 @@ app.get('/errors', (req, res) =>{
 });
 
 app.post('/searches', (req, res) =>{
-  console.log(req.body);
+  // console.log(req.body);
   getBooks(req, res);
 });
 
@@ -68,14 +68,16 @@ function getBooks (req, res) {
 
 }
 
-// TODO: make sure no mixed content - urls should be https
 function Book(obj) {
   this.image = 'https://www.freeiconspng.com/uploads/book-icon--icon-search-engine-6.png';
   if (obj.volumeInfo.imageLinks && obj.volumeInfo.imageLinks.thumbnail) {
     this.image = obj.volumeInfo.imageLinks.thumbnail;
+    if(this.image.match('^http:')){
+      this.image = this.image.replace('http:','https:');
+    }
   }
   this.title = obj.volumeInfo.title || 'no title';
-  this.author = obj.volumeInfo.authors[0] || 'no author';
+  this.author = obj.volumeInfo.authors || 'no author';
   this.description = obj.volumeInfo.description || 'no description';
 }
 // start the app
