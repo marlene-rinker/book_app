@@ -26,6 +26,8 @@
 
 05-19-2020 08:25 Added ability to show all authors and prevented mixed content on image urls
 
+05-19-2020 09:00 Added ability to search for terms in title or author
+
 
 
 ## Credits and Collaborations 

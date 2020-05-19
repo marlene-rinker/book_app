@@ -38,12 +38,18 @@ app.post('/searches', (req, res) =>{
 
 function getBooks (req, res) {
   const url ='https://www.googleapis.com/books/v1/volumes';
+  let search_query = req.body.search[0];
+  if(req.body.search[1] === 'title'){
+    search_query = `intitle: ${req.body.search[0]}`;
+  }
+  if(req.body.search[1] === 'author'){
+    search_query = `inauthor: ${req.body.search[0]}`;
+  }
 
   const queryForSuper = {
-    q: req.body.search[0],
+    q: search_query,
     maxResults: 10
   };
-  // TODO: make search specific to title or author??
   superagent.get(url)
     .query(queryForSuper)
     .then(resultFromSuper => {
@@ -77,7 +83,7 @@ function Book(obj) {
     }
   }
   this.title = obj.volumeInfo.title || 'no title';
-  this.author = obj.volumeInfo.authors || 'no author';
+  this.author = obj.volumeInfo.authors || ['no author'];
   this.description = obj.volumeInfo.description || 'no description';
 }
 // start the app
