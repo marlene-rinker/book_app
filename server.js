@@ -15,9 +15,9 @@ app.set('view engine', 'ejs');
 // if we use forms this is needed
 app.use(express.urlencoded( {extended: true}));
 
-// app.get('/', (req, res) =>{
-//   res.render('pages/index.ejs');
-// });
+app.get('/', (req, res) =>{
+  res.render('pages/index.ejs');
+});
 
 app.get('/hello', (req, res) =>{
   res.render('pages/index.ejs');
@@ -29,7 +29,6 @@ app.get('/searches/new', (req, res) =>{
 
 app.post('/searches', (req, res) =>{
   console.log(req.body);
-  // res.send('hello there');
   getBooks(req, res);
 });
 
@@ -40,22 +39,20 @@ function getBooks (req, res) {
     q: req.body.search[0],
     maxResults: 10
   };
-  // console.log(`this is the query: ${req.body.search[0]}`);
 
   superagent.get(url)
     .query(queryForSuper)
     .then(resultFromSuper => {
-      // console.log(resultFromSuper.body.items[0].volumeInfo);
+
 
       const search_results = resultFromSuper.body.items;
       const bookResults = [];
 
       for (let i = 0; i < search_results.length; i++) {
-        console.log(`this is search_results ${i}` ,search_results[i]);
+        // console.log(`this is search_results ${i}` ,search_results[i]);
         bookResults.push(new Book(search_results[i]));
       }
-      console.log(bookResults);
-      // res.send(bookResults).status(200);
+      // console.log(bookResults);
       res.render('pages/searches/show',{arrayOfBooks : bookResults});
     })
     .catch(error => {
