@@ -11,14 +11,16 @@
 
   <!-- <p><%= JSON.stringify(arrayOfBooks) %></p> -->
 
-  <section>
+  
     <% arrayOfBooks.forEach(book => { %>
+      <section>
       <p><img src="<%=book.image %>" width=64 height=64></p>
       <h1><%=book.title %></h1>
       <h2><%=book.author %></h2>
       <p><%=book.description %></p>
+    </section>
     <% }) %>
-  </section>
+  
   
 </body>
 </html>

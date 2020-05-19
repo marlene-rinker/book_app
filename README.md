@@ -18,6 +18,9 @@
 
 05-18-2020 17:00 Added form to search for books
 
+05-18-2020 21:45 Added search info from API to page
+
+05-18-2020 22:10 Added a basic home page
 
 
 
@@ -60,6 +63,15 @@ Estimate of time needed to complete: 1 hour
 
 Start time: 5:05 pm
 
-Finish time: 
+Finish time: 9:40 pm (took a break between start and finish)
 
-Actual time needed to complete: 
+Actual time needed to complete: 3 hours and 10 minutes
+
+### Set Up A Basic Home Page
+Estimate of time needed to complete: 10 minutes
+
+Start time: 9:55 pm
+
+Finish time: 10:02 pm
+
+Actual time needed to complete: 7 minutes
