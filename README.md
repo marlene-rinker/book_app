@@ -22,6 +22,8 @@
 
 05-18-2020 22:10 Added a basic home page
 
+05-18-2020 22:55 Added an errors page
+
 
 
 ## Credits and Collaborations 
@@ -75,3 +77,12 @@ Start time: 9:55 pm
 Finish time: 10:02 pm
 
 Actual time needed to complete: 7 minutes
+
+### Set Up An Errors Page
+Estimate of time needed to complete: 30 minutes
+
+Start time: 10:15 pm
+
+Finish time: 10:50 pm
+
+Actual time needed to complete: 35 minutes

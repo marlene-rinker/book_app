@@ -27,6 +27,10 @@ app.get('/searches/new', (req, res) =>{
   res.render('pages/searches/new.ejs');
 });
 
+app.get('/errors', (req, res) =>{
+  res.render('pages/errors.ejs');
+});
+
 app.post('/searches', (req, res) =>{
   console.log(req.body);
   getBooks(req, res);
@@ -57,14 +61,15 @@ function getBooks (req, res) {
     })
     .catch(error => {
       console.log(error);
-      res.send(error).status(500);
+      // res.send(error).status(500);
+      // TODO: Make sure the error page really works, not sure that it does
+      res.render('pages/errors',{errorMessage : 'An error has occurred.'});
     });
 
 }
 
 // TODO: make sure no mixed content - urls should be https
 function Book(obj) {
-  console.log(obj);
   this.image = 'https://www.freeiconspng.com/uploads/book-icon--icon-search-engine-6.png';
   if (obj.volumeInfo.imageLinks && obj.volumeInfo.imageLinks.thumbnail) {
     this.image = obj.volumeInfo.imageLinks.thumbnail;
