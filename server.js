@@ -68,8 +68,7 @@ function getBooks (req, res) {
     .catch(error => {
       console.log(error);
       // res.send(error).status(500);
-      // TODO: Make sure the error page really works, not sure that it does
-      res.render('pages/errors',{errorMessage : 'An error has occurred.'});
+      res.render('pages/errors',{errorMessage : error});
     });
 
 }
