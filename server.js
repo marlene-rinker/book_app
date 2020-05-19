@@ -62,6 +62,7 @@ function getBooks (req, res) {
     .catch(error => {
       console.log(error);
       // res.send(error).status(500);
+      // TODO: Make sure the error page really works, not sure that it does
       res.render('pages/errors',{errorMessage : 'An error has occurred.'});
     });
 
@@ -69,7 +70,6 @@ function getBooks (req, res) {
 
 // TODO: make sure no mixed content - urls should be https
 function Book(obj) {
-  console.log(obj);
   this.image = 'https://www.freeiconspng.com/uploads/book-icon--icon-search-engine-6.png';
   if (obj.volumeInfo.imageLinks && obj.volumeInfo.imageLinks.thumbnail) {
     this.image = obj.volumeInfo.imageLinks.thumbnail;
