@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/styles/base.css">
+</head>
+<body>
+  <h1>Books You Wanted</h1>
+
+  <!-- <p><%= JSON.stringify(arrayOfBooks) %></p> -->
+
+  <section>
+    <% arrayOfBooks.forEach(book => { %>
+      <p><img src="<%=book.image %>" width=64 height=64></p>
+      <h1><%=book.title %></h1>
+      <h2><%=book.author %></h2>
+      <p><%=book.description %></p>
+    <% }) %>
+  </section>
+  
+</body>
+</html>

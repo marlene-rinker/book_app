@@ -1,6 +1,10 @@
 * {
-  background-color: lightseagreen;
+  background-color: darkgrey;
 }
 h1 {
   color: blue;
+}
+
+ul {
+  list-style: none;
 }

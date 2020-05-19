@@ -16,6 +16,9 @@
 
 05-18-2020 16:03 Added server.js and basic html in ejs file 
 
+05-18-2020 17:00 Added form to search for books
+
+
 
 
 ## Credits and Collaborations 
@@ -47,6 +50,15 @@ Actual time needed to complete: 32 minutes
 Estimate of time needed to complete: 1 hour
 
 Start time: 4:08 pm
+
+Finish time: 5:00 pm
+
+Actual time needed to complete: 1 hour
+
+### Set Up API Search for Google Books
+Estimate of time needed to complete: 1 hour
+
+Start time: 5:05 pm
 
 Finish time: 
 
