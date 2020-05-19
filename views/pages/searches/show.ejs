@@ -16,7 +16,7 @@
       <section>
       <p><img src="<%=book.image %>" width=64 height=64></p>
       <h1><%=book.title %></h1>
-      <h2><%=book.author %></h2>
+      <h2><%=book.author.join(', ') %></h2>
       <p><%=book.description %></p>
     </section>
     <% }) %>
