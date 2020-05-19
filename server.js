@@ -27,6 +27,10 @@ app.get('/searches/new', (req, res) =>{
   res.render('pages/searches/new.ejs');
 });
 
+app.get('/errors', (req, res) =>{
+  res.render('pages/errors.ejs');
+});
+
 app.post('/searches', (req, res) =>{
   console.log(req.body);
   getBooks(req, res);
@@ -57,7 +61,8 @@ function getBooks (req, res) {
     })
     .catch(error => {
       console.log(error);
-      res.send(error).status(500);
+      // res.send(error).status(500);
+      res.render('pages/errors',{errorMessage : 'An error has occurred.'});
     });
 
 }
