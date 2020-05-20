@@ -18,25 +18,19 @@ app.use(express.urlencoded( {extended: true}));
 //set up pg
 const client = require('./modules/pg_client.js');
 
+// routes
 app.get('/', getStoredBooks);
+app.get('/books/:id', requestBook);
+app.post('/books', addBook);
 
-app.get('/hello', (req, res) =>{
-  res.render('pages/index.ejs');
-});
 
-app.get('/searches/new', (req, res) =>{
-  res.render('pages/searches/new.ejs');
-});
-
-app.get('/errors', (req, res) =>{
-  res.render('pages/errors.ejs');
-});
-
+app.get('/searches/new', displaySearchPage);
 app.post('/searches', getBooks);
 
-app.get('/books/:id', requestBook);
+app.get('/errors', displayErrorsPage);
 
 
+// functions
 
 function getBooks (req, res) {
   const url ='https://www.googleapis.com/books/v1/volumes';
@@ -75,6 +69,14 @@ function getBooks (req, res) {
 
 }
 
+function displaySearchPage (req, res) {
+  res.render('pages/searches/new.ejs');
+}
+
+function displayErrorsPage (req, res) {
+  res.render('pages/errors.ejs');
+}
+
 function getStoredBooks(req, res){
   const sqlQuery = 'SELECT * FROM books';
   client.query(sqlQuery)
@@ -88,7 +90,7 @@ function getStoredBooks(req, res){
 }
 
 function requestBook(req, res){
-  console.log('req.params', req.params);
+  // console.log('req.params', req.params);
   // choosing from the db a specific book, based on the id
 
   client.query('SELECT * FROM books WHERE id=$1', [req.params.id])
@@ -96,7 +98,17 @@ function requestBook(req, res){
       console.log('dataFromSql', dataFromSql);
       res.render('pages/books/show', {bookRequested: dataFromSql.rows[0]});
     });
+}
 
+function addBook(req, res){
+  const sqlQuery = 'INSERT INTO books (author, title, isbn, image_url, description, bookshelf) VALUES ($1, $2, $3, $4, $5, $6)';
+  const sqlValues = [req.body.author, req.body.title, req.body.isbn, req.body.image, req.body.description, req.body.bookshelf];
+  client.query(sqlQuery, sqlValues)
+  client.query('SELECT * FROM books WHERE isbn=$1', [req.body.isbn])
+    .then(dataFromSql => {
+      console.log('after add new book in sql', dataFromSql);
+      res.redirect(`/books/${dataFromSql.rows[0].id}`)
+    })
 }
 
 function Book(obj) {
@@ -108,8 +120,10 @@ function Book(obj) {
     }
   }
   this.title = obj.volumeInfo.title || 'no title';
-  this.author = obj.volumeInfo.authors || ['no author'];
+  this.author = obj.volumeInfo.authors[0] || ['no author'];
   this.description = obj.volumeInfo.description || 'no description';
+  this.isbn = obj.volumeInfo.industryIdentifiers[0].identifier || 'no ISBN';
+  this.bookshelf = 'no bookshelf';
 }
 // start the app
 app.listen(PORT, () => console.log(`App is up on PORT:  ${PORT}`));
