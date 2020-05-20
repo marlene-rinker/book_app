@@ -34,6 +34,10 @@ app.get('/errors', (req, res) =>{
 
 app.post('/searches', getBooks);
 
+app.get('/books/:id', requestBook);
+
+
+
 function getBooks (req, res) {
   const url ='https://www.googleapis.com/books/v1/volumes';
   let search_query = req.body.search[0];
@@ -81,6 +85,18 @@ function getStoredBooks(req, res){
         res.redirect('searches/new');
       }
     })
+}
+
+function requestBook(req, res){
+  console.log('req.params', req.params);
+  // choosing from the db a specific book, based on the id
+
+  client.query('SELECT * FROM books WHERE id=$1', [req.params.id])
+    .then(dataFromSql => {
+      console.log('dataFromSql', dataFromSql);
+      res.render('pages/books/show', {bookRequested: dataFromSql.rows[0]});
+    });
+
 }
 
 function Book(obj) {

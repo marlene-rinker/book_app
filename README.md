@@ -30,6 +30,8 @@ Books are stored in a table called books. It's in a database called books_app. Y
 
 05-19-2020 17:50 Added a database to store books and added ability to render them to the home page
 
+05-19-2020 21:20 Added a page to show one book when click view details
+
 
 
 ## Credits and Collaborations 
@@ -101,3 +103,12 @@ Start time: 3:20 pm
 Finish time: 5:46 pm
 
 Actual time needed to complete: 2 hours and 26 minutes
+
+### View Book Details
+Estimate of time needed to complete: 1 and a half hours
+
+Start time: 7:45 pm
+
+Finish time: 9:15 pm
+
+Actual time needed to complete: 1 and a half hours
