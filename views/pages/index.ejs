@@ -12,10 +12,8 @@
 
   <% booksArray.forEach(book => { %>
     <section>
-    <p><img src="<%=book.image_url %>" width=64 height=64></p>
-    <h1><%=book.title %></h1>
-    <h2><%=book.author %></h2>
-    <button type="button">View Details</button>
+      <%- include('./books/detail.ejs', {bookRequested: book}) %>
+      <button onclick="window.location.href = '/books/<%=book.id%>'">View Details</button>
   </section>
   <% }) %>
 
