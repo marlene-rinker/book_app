@@ -3,21 +3,22 @@
 //packages
 const express = require('express');
 const superagent = require('superagent');
+require('dotenv').config();
 
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+//set up app
+
 app.use(express.static('./public'));
-
 app.set('view engine', 'ejs');
-
-// if we use forms this is needed
 app.use(express.urlencoded( {extended: true}));
 
-app.get('/', (req, res) =>{
-  res.render('pages/index.ejs');
-});
+//set up pg
+const client = require('./modules/pg_client.js');
+
+app.get('/', getStoredBooks);
 
 app.get('/hello', (req, res) =>{
   res.render('pages/index.ejs');
@@ -31,10 +32,7 @@ app.get('/errors', (req, res) =>{
   res.render('pages/errors.ejs');
 });
 
-app.post('/searches', (req, res) =>{
-  // console.log(req.body);
-  getBooks(req, res);
-});
+app.post('/searches', getBooks);
 
 function getBooks (req, res) {
   const url ='https://www.googleapis.com/books/v1/volumes';
@@ -71,6 +69,18 @@ function getBooks (req, res) {
       res.render('pages/errors',{errorMessage : error});
     });
 
+}
+
+function getStoredBooks(req, res){
+  const sqlQuery = 'SELECT * FROM books';
+  client.query(sqlQuery)
+    .then(resultFromSql => {
+      if(resultFromSql.rowCount > 0){
+        res.render('pages/index',{booksArray : resultFromSql.rows, rowCount : resultFromSql.rowCount});
+      }else {
+        res.redirect('searches/new');
+      }
+    })
 }
 
 function Book(obj) {

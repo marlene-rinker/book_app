@@ -7,9 +7,17 @@
   <link rel="stylesheet" href="/styles/base.css">
 </head>
 <body>
-  <h1>Books</h1>
+  <h1>Best Books!</h1>
+  <h2><%= rowCount %> Saved Books</h2>
 
-  <p style="text-align:center"><a href="/searches/new">Search for books</a></p>
+  <% booksArray.forEach(book => { %>
+    <section>
+    <p><img src="<%=book.image_url %>" width=64 height=64></p>
+    <h1><%=book.title %></h1>
+    <h2><%=book.author %></h2>
+    <button type="button">View Details</button>
+  </section>
+  <% }) %>
 
   
 </body>
