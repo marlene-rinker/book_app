@@ -1,22 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="/styles/base.css">
-</head>
+<%- include('./layout/head.ejs') %>  
 <body>
-  <h1>Best Books!</h1>
+  <%- include('./layout/header.ejs') %>
+  <p style="text-align:center"><a href="/searches/new">Search for books</a></p>
   <h2><%= rowCount %> Saved Books</h2>
 
   <% booksArray.forEach(book => { %>
     <section>
-      <%- include('./books/detail.ejs', {bookRequested: book}) %>
+      <%- include('./books/detail.ejs', {bookRequested: book, showDescription : false}) %>
       <button onclick="window.location.href = '/books/<%=book.id%>'">View Details</button>
   </section>
   <% }) %>
 
+  <%- include('./layout/footer.ejs') %>
   
 </body>
 </html>

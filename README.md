@@ -123,3 +123,12 @@ Start time: 9:30 pm - stopped at 10:30, but not finished
 Finish time: 2:50 pm
 
 Actual time needed to complete: 1 and a half hours
+
+### Use Partials 
+Estimate of time needed to complete: 30 minutes
+
+Start time: 3:02 pm
+
+Finish time: 
+
+Actual time needed to complete: 

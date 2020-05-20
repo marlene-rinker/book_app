@@ -1,35 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="/styles/base.css">
-</head>
+ <%- include('../layout/head.ejs') %>
 <body>
-  <h1>Books You Wanted</h1>
+  <%- include('../layout/header.ejs') %>
+  <h2>Books You Wanted</h2>
 
-  <!-- <p><%= JSON.stringify(arrayOfBooks) %></p> -->
 
-  
     <% arrayOfBooks.forEach(book => { %>
       <section> 
-          <p><img src="<%=book.image %>" width=64 height=64></p>
-          <h1><%=book.title %></h1>
-          <h2><%=book.author %></h2>
-          <p><%=book.description %></p>
-     <form action="/books" method="POST"> 
-        <input type="hidden" name="title" value="<%=book.title %>">
-        <input type="hidden" name="author" value="<%=book.author %>">
-        <input type="hidden" name="description" value="<%=book.description %>">
-        <input type="hidden" name="image" value="<%=book.image %>">
-        <input type="hidden" name="isbn" value="<%=book.isbn %>">
-        <input type="hidden" name="bookshelf" value="<%=book.bookshelf %>">
-        <input type="submit" value="Select This Book">
-      </form>
+        <%- include('../books/detail.ejs', {bookRequested: book, showDescription : true}) %>
+        <form action="/books" method="POST"> 
+            <input type="hidden" name="title" value="<%=book.title %>">
+            <input type="hidden" name="author" value="<%=book.author %>">
+            <input type="hidden" name="description" value="<%=book.description %>">
+            <input type="hidden" name="image" value="<%=book.image %>">
+            <input type="hidden" name="isbn" value="<%=book.isbn %>">
+            <input type="hidden" name="bookshelf" value="<%=book.bookshelf %>">
+            <input type="submit" value="Select This Book">
+          </form>
     </section>
     <% }) %>
   
+    <%- include('../layout/footer.ejs') %>
+
   
 </body>
 </html>

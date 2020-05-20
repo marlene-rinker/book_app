@@ -1,0 +1,19 @@
+h1 {
+  text-align: center;
+}
+header h1 {
+  text-align: left;
+}
+h2 {
+  text-align: center;
+}
+
+ul {
+  list-style: none;
+}
+
+section {
+  text-align: center;
+  margin: 20px;
+  padding: 50px;
+}

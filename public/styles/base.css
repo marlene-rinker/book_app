@@ -1,20 +1,15 @@
-* {
+body {
   background-color: darkgrey;
   font-family: Arial, Helvetica, sans-serif;
 }
-h1 {
-  color: blue;
-  text-align: center;
-}
 
-ul {
-  list-style: none;
-}
-
-section {
+footer {
   text-align: center;
-  margin: 20px;
+  background-color: lightskyblue;
+  color: white;
   padding: 50px;
-  border: solid 5px black;
+  max-height: 5%;
+  margin-top: 20px;
+  border: solid 1px lightskyblue;
   border-radius: 5px;
 }
