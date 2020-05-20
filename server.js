@@ -101,7 +101,7 @@ function requestBook(req, res){
 }
 
 function addBook(req, res){
-  const sqlQuery = 'INSERT INTO books (author, title, isbn, image_url, description, bookshelf) VALUES ($1, $2, $3, $4, $5, $6)';
+  const sqlQuery = 'INSERT INTO books (author, title, isbn, image, description, bookshelf) VALUES ($1, $2, $3, $4, $5, $6)';
   const sqlValues = [req.body.author, req.body.title, req.body.isbn, req.body.image, req.body.description, req.body.bookshelf];
   client.query(sqlQuery, sqlValues)
   client.query('SELECT * FROM books WHERE isbn=$1', [req.body.isbn])

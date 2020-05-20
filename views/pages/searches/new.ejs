@@ -1,12 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Search</title>
-  <link rel="stylesheet" href="/styles/base.css">
-</head>
+<%- include('../layout/head.ejs') %>
 <body>
+  <%- include('../layout/header.ejs') %>
 <form action="/searches" method="POST">
   <fieldset>
     <legend>Search For Books</legend>
@@ -24,6 +20,6 @@
     <input type="submit">
   </fieldset>
 </form>
-  
+<%- include('../layout/footer.ejs') %>
 </body>
 </html>

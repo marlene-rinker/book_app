@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Errors</title>
-  <link rel="stylesheet" href="/styles/base.css">
-</head>
+<%- include('./layout/head.ejs') %>   
 <body>
-  <h1>Errors Page</h1>
+  <%- include('./layout/header.ejs') %>
+  <h2>Errors Page</h2>
+  <p style="text-align:center"><a href="/">Home Page</a></p>
   <section>
   <h2><%=errorMessage %></h2>
   </section>
+  <%- include('./layout/footer.ejs') %>
   
 </body>
 </html>

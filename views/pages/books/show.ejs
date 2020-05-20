@@ -1,24 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="/styles/base.css">
-</head>
+<%- include('../layout/head.ejs') %>
 <body>
-  <h1>Best Books!</h1>
+  <%- include('../layout/header.ejs') %>
   <p style="text-align:center"><a href="/">Home Page</a></p>
 
   <section>
-  <%- include('./detail.ejs') %>
-  <p><%=bookRequested.description %></p>
+  <%- include('./detail.ejs', {showDescription : true}) %>
+  <!-- <p><%=bookRequested.description %></p> -->
   <h2>ISBN: <%=bookRequested.isbn %></h2>
   <h2>Bookshelf: <%=bookRequested.bookshelf %></h2>
 </section>
 
 
   
+<%- include('../layout/footer.ejs') %>
   
 </body>
 </html>
