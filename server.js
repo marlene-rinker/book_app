@@ -79,6 +79,8 @@ function displayErrorsPage (req, res) {
   res.render('pages/errors.ejs');
 }
 
+
+
 function getStoredBooks(req, res){
   const sqlQuery = 'SELECT * FROM books';
   client.query(sqlQuery)
@@ -91,11 +93,14 @@ function getStoredBooks(req, res){
     })
 }
 
-function requestBook(req, res){
 
-  client.query('SELECT * FROM books WHERE id=$1', [req.params.id])
-    .then(dataFromSql => {
-      res.render('pages/books/show', {bookRequested: dataFromSql.rows[0]});
+function requestBook(req, res){
+  client.query('SELECT DISTINCT bookshelf FROM books')
+    .then(bookshelfList => {
+      client.query('SELECT * FROM books WHERE id=$1', [req.params.id])
+        .then(dataFromSql => {
+          res.render('pages/books/show', {bookRequested: dataFromSql.rows[0], bookshelfList : bookshelfList});
+        });
     });
 }
 
