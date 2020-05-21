@@ -26,6 +26,7 @@ app.get('/', getStoredBooks);
 app.get('/books/:id', requestBook);
 app.post('/books', addBook);
 app.put('/books/:id', updateBook);
+app.delete('/books/:id', deleteBook);
 
 
 app.get('/searches/new', displaySearchPage);
@@ -109,9 +110,14 @@ function addBook(req, res){
     })
 }
 
+function deleteBook(req, res) {
+  client.query('DELETE FROM books WHERE id=$1', [req.params.id])
+    .then(() => {
+      res.redirect('/')
+    })
+}
+
 function updateBook(req, res) {
-  // console.log('request on a PUT route : success');
-  // console.log('req.params', req.params);
   const sqlQuery = `
     UPDATE books 
     SET author=$2, title=$3, isbn=$4, image=$5, description=$6, bookshelf=$7

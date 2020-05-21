@@ -11,6 +11,10 @@
   <h2>ISBN: <%=bookRequested.isbn %></h2>
   <h2>Bookshelf: <%=bookRequested.bookshelf %></h2>
   <button id="update">Update Details</button>
+  <!-- <button id="delete">Delete Book</button> -->
+  <form id="delete-form" action="/books/<%=bookRequested.id %>/?_overrideMethod=DELETE" method="POST">
+      <button id="delete" type="submit">Delete Book</button>
+  </form>
   <form id="update-form" action="/books/<%=bookRequested.id %>/?_overrideMethod=PUT" method="POST">
   <fieldset>
     <label for="title">Title</label>
