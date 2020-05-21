@@ -19,8 +19,13 @@ section {
 }
 
 form {
-  border: black 2px solid;
-  border-radius: 5px;
   margin: 20px;
   font-size: 16px;
+}
+
+
+#update {
+  float: left;
+  margin-left: 25%;
+  margin-right: 0;
 }
