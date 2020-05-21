@@ -150,7 +150,10 @@ function Book(obj) {
     }
   }
   this.title = obj.volumeInfo.title || 'no title';
-  this.author = obj.volumeInfo.authors[0] || ['no author'];
+  this.author = 'no author';
+  if (obj.volumeInfo.authors) {
+    this.author = obj.volumeInfo.authors[0];
+  }
   this.description = obj.volumeInfo.description || 'no description';
   this.isbn ='no ISBN';
   if (obj.volumeInfo.industryIdentifiers) {
