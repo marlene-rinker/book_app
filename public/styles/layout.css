@@ -17,3 +17,10 @@ section {
   margin: 20px;
   padding: 50px;
 }
+
+form {
+  border: black 2px solid;
+  border-radius: 5px;
+  margin: 20px;
+  font-size: 16px;
+}

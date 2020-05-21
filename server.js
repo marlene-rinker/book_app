@@ -59,15 +59,12 @@ function getBooks (req, res) {
       const bookResults = [];
 
       for (let i = 0; i < search_results.length; i++) {
-        // console.log(`this is search_results ${i}` ,search_results[i]);
         bookResults.push(new Book(search_results[i]));
       }
-      // console.log(bookResults);
       res.render('pages/searches/show',{arrayOfBooks : bookResults});
     })
     .catch(error => {
       console.log(error);
-      // res.send(error).status(500);
       res.render('pages/errors',{errorMessage : error});
     });
 
@@ -102,7 +99,7 @@ function requestBook(req, res){
 }
 
 function addBook(req, res){
-  // run SELECT from table, check if matches something, then run or not (if want to only add if not there)
+  // enhancement for later: run SELECT from table, check if matches something, then run or not (if want to only add if not there)
   const sqlQuery = 'INSERT INTO books (author, title, isbn, image, description, bookshelf) VALUES ($1, $2, $3, $4, $5, $6)';
   const sqlValues = [req.body.author, req.body.title, req.body.isbn, req.body.image, req.body.description, req.body.bookshelf];
   client.query(sqlQuery, sqlValues)
@@ -113,8 +110,8 @@ function addBook(req, res){
 }
 
 function updateBook(req, res) {
-  console.log('request on a PUT route : success');
-  console.log('req.params', req.params);
+  // console.log('request on a PUT route : success');
+  // console.log('req.params', req.params);
   const sqlQuery = `
     UPDATE books 
     SET author=$2, title=$3, isbn=$4, image=$5, description=$6, bookshelf=$7
@@ -127,7 +124,6 @@ function updateBook(req, res) {
     })
     .catch(error => {
       console.log(error);
-      // res.send(error).status(500);
       res.render('pages/errors',{errorMessage : error});
     });
 }

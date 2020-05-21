@@ -36,6 +36,8 @@ Books are stored in a table called books. It's in a database called books_app. Y
 
 05-19-2020 16:25 Added partials and some css files
 
+05-19-2020 20:15 Added ability to update book details
+
 
 
 ## Credits and Collaborations 
@@ -138,8 +140,8 @@ Actual time needed to complete: 1 hour and 18 minutes
 ### Update Book In Database
 Estimate of time needed to complete: 1 hour
 
-Start time: 4:36 pm
+Start time: 4:36 pm (stopped at 5:50 pm - then started again at 7:30 pm)
 
-Finish time: 
+Finish time: 8:10 pm
 
-Actual time needed to complete: 
+Actual time needed to complete: 2 hours and 44 minutes

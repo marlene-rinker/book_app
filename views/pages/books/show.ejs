@@ -11,7 +11,7 @@
   <h2>ISBN: <%=bookRequested.isbn %></h2>
   <h2>Bookshelf: <%=bookRequested.bookshelf %></h2>
   <button id="update">Update Details</button>
-  <form id="form" action="/books/<%=bookRequested.id %>/?_overrideMethod=PUT" method="POST">
+  <form id="update-form" action="/books/<%=bookRequested.id %>/?_overrideMethod=PUT" method="POST">
   <fieldset>
     <label for="title">Title</label>
     <input type="text", name="title", value="<%=bookRequested.title %>">
@@ -34,7 +34,7 @@
   
 <%- include('../layout/footer.ejs') %>
 
-<script src='.../modules/app.js'></script>
+<script src='/modules/app.js'></script>
   
 </body>
 </html>
