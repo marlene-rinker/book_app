@@ -99,7 +99,7 @@ function requestBook(req, res){
     .then(bookshelfList => {
       client.query('SELECT * FROM books WHERE id=$1', [req.params.id])
         .then(dataFromSql => {
-          res.render('pages/books/show', {bookRequested: dataFromSql.rows[0], bookshelfList : bookshelfList});
+          res.render('pages/books/show', {bookRequested: dataFromSql.rows[0], bookshelfList : bookshelfList.rows});
         });
     });
 }

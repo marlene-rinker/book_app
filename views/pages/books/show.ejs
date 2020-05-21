@@ -27,14 +27,20 @@
     <input type="text", name="image", value="<%=bookRequested.image %>">
     <label for="description">Description</label>
     <input type="text", name="description", value="<%=bookRequested.description %>">
+    <!-- <label for="bookshelf">Bookshelf</label>
+    <input type="text", name="bookshelf", value="<%=bookRequested.bookshelf %>"> -->
     <label for="bookshelf">Bookshelf</label>
-    <input type="text", name="bookshelf", value="<%=bookRequested.bookshelf %>">
+    <input list="bookshelves", name="bookshelf", id="bookshelf", value="<%=bookRequested.bookshelf %>">
+    <datalist id="bookshelves">
+      <% bookshelfList.forEach(bookshelf => { %>
+        <option value="<%=bookshelf.bookshelf %>">
+      <% }) %>
+    </datalist>
     <input type="submit", value="Update">
   </fieldset>
 </form>
 </section>
 
-<p><%=JSON.stringify(bookshelfList.rows)%></p>
 
 
   
