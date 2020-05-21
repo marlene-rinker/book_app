@@ -41,18 +41,20 @@ function getBooks (req, res) {
   const url ='https://www.googleapis.com/books/v1/volumes';
   let search_query = req.body.search[0];
   if(req.body.search[1] === 'title'){
-    search_query = `intitle: ${req.body.search[0]}`;
+    search_query = `intitle:${req.body.search[0]}`;
   }
   if(req.body.search[1] === 'author'){
-    search_query = `inauthor: ${req.body.search[0]}`;
+    search_query = `inauthor:${req.body.search[0]}`;
   }
 
   const queryForSuper = {
     q: search_query,
     maxResults: 10
   };
+
   superagent.get(url)
     .query(queryForSuper)
+
     .then(resultFromSuper => {
 
 
@@ -66,7 +68,7 @@ function getBooks (req, res) {
     })
     .catch(error => {
       console.log(error);
-      res.render('pages/errors',{errorMessage : error});
+      res.render('pages/errors',{errorMessage : 'No results found'});
     });
 
 }
@@ -150,7 +152,10 @@ function Book(obj) {
   this.title = obj.volumeInfo.title || 'no title';
   this.author = obj.volumeInfo.authors[0] || ['no author'];
   this.description = obj.volumeInfo.description || 'no description';
-  this.isbn = obj.volumeInfo.industryIdentifiers[0].identifier || 'no ISBN';
+  this.isbn ='no ISBN';
+  if (obj.volumeInfo.industryIdentifiers) {
+    this.isbn = obj.volumeInfo.industryIdentifiers[0].identifier;
+  }
   this.bookshelf = 'no bookshelf';
 }
 // start the app
