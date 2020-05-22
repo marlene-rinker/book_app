@@ -2,8 +2,12 @@ h1 {
   color: blue;
 }
 
+h2 {
+  color: rgb(32, 31, 31);
+}
+
 section {
-  border: solid 5px black;
+  border: solid 5px rgb(32, 31, 31);
   border-radius: 5px;
 }
 
@@ -19,8 +23,47 @@ button {
   font-size: 16px;
 }
 
+button:hover {
+  background-color: white; 
+  color: blue;
+}
+
+
 input {
   margin: 5px;
   padding: 5px;
   font-size: 16px;
+}
+
+.navbar {
+  overflow: hidden;
+  display: flex;
+  border: solid 5px rgb(32, 31, 31);
+  border-radius: 5px;
+  /* vertical-align: center; */
+  justify-content: left;
+  margin: 20px;
+  margin-top: 10px;
+  padding: 0;
+}
+
+.navbar a {
+  float: left;
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+  display: flex;
+  text-align: center;
+  padding: 14px 16px;
+}
+
+.navbar a:hover {
+  color: blue;
+}
+ul{
+  display: flex;
+}
+
+img {
+  max-width: 100px;
 }
