@@ -3,15 +3,13 @@
 <%- include('../layout/head.ejs') %>
 <body>
   <%- include('../layout/header.ejs') %>
-  <p style="text-align:center"><a href="/">Home Page</a></p>
+  <%- include('../layout/navbar.ejs') %>
 
   <section>
   <%- include('./detail.ejs', {showDescription : true}) %>
-  <!-- <p><%=bookRequested.description %></p> -->
   <h2>ISBN: <%=bookRequested.isbn %></h2>
   <h2>Bookshelf: <%=bookRequested.bookshelf %></h2>
   <button id="update">Update Details</button>
-  <!-- <button id="delete">Delete Book</button> -->
   <form id="delete-form" action="/books/<%=bookRequested.id %>/?_overrideMethod=DELETE" method="POST">
       <button id="delete" type="submit">Delete Book</button>
   </form>

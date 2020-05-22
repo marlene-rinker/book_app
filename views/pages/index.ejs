@@ -3,7 +3,8 @@
 <%- include('./layout/head.ejs') %>  
 <body>
   <%- include('./layout/header.ejs') %>
-  <p style="text-align:center"><a href="/searches/new">Search for books</a></p>
+  <%- include('./layout/navbar.ejs') %>
+  <!-- <p style="text-align:center"><a href="/searches/new">Search for books</a></p> -->
   <h2><%= rowCount %> Saved Books</h2>
 
   <% booksArray.forEach(book => { %>

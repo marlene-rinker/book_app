@@ -1,8 +1,14 @@
+body {
+  width: 100vw;
+  /* display: flex;
+  flex-wrap: wrap; */
+}
 h1 {
   text-align: center;
 }
 header h1 {
   text-align: left;
+  margin: 20px;
 }
 h2 {
   text-align: center;
@@ -13,6 +19,7 @@ ul {
 }
 
 section {
+
   text-align: center;
   margin: 20px;
   padding: 50px;
@@ -28,4 +35,8 @@ form {
   float: left;
   margin-left: 25%;
   margin-right: 0;
+}
+
+footer {
+  margin: 20px;
 }
